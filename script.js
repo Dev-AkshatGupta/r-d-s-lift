@@ -1,6 +1,5 @@
 const simulateBtn = document.querySelector("#simulate");
 const liftsNumber = document.querySelector("#lifts");
-// const liftsNumber = document.querySelector(".lifts");
 const floorsNumber = document.querySelector("#floors");
 const simulationDiv = document.querySelector(".simulation");
 let liftBtn;
@@ -13,6 +12,7 @@ simulateBtn.addEventListener("click", () => {
     let button = document.createElement("button");
     button.textContent = "call ";
     button.className = "btn";
+    button.dataset.floor = i;
     divEl.className = "floor";
     simulationDiv.appendChild(divEl);
     divEl.appendChild(button);
@@ -32,8 +32,26 @@ simulateBtn.addEventListener("click", () => {
   //   for floor buttons for calling lifts
   console.log(liftBtn);
   let currentLiftValue;
+  let liftToCall;
   liftBtn.forEach((button, index) =>
     button.addEventListener("click", () => {
+      console.log(index);
+      lifts.forEach((lift, idx) => {
+        if (
+          Number.parseInt(button.dataset.floor - lift.dataset.floor) <
+          currentLiftValue
+        ) {
+          currentLiftValue = Number.parseInt(
+            button.dataset.floor - lift.dataset.floor
+          );
+          liftToCall = lift;
+          console.log(liftToCall);
+        }
+        console.log({ currentLiftValue, liftToCall });
+      });
+      if(currentLiftValue){
+        
+      }
       // currentLiftValue=index-liftsNumber
     })
   );
