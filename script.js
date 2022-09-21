@@ -31,11 +31,11 @@ simulateBtn.addEventListener("click", () => {
   console.log(lifts[0].dataset.floor);
   //   for floor buttons for calling lifts
   console.log(liftBtn);
-  let currentLiftValue;
+  let currentLiftValue = Infinity;
   let liftToCall;
   liftBtn.forEach((button, index) =>
     button.addEventListener("click", () => {
-      console.log(index);
+      // console.log(index);
       lifts.forEach((lift, idx) => {
         if (
           Number.parseInt(button.dataset.floor - lift.dataset.floor) <
@@ -49,8 +49,7 @@ simulateBtn.addEventListener("click", () => {
         }
         console.log({ currentLiftValue, liftToCall });
       });
-      if(currentLiftValue){
-        
+      if (currentLiftValue) {
       }
       // currentLiftValue=index-liftsNumber
     })
