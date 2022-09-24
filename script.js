@@ -7,7 +7,19 @@ let lifts;
 let liftToCall;
 
 simulateBtn.addEventListener("click", () => {
+
   // For floors
+
+  for (let i = 1; i <= floorsNumber.value; i++) {
+    let divEl = document.createElement("div");
+    let button = document.createElement("button");
+    button.textContent = "call ";
+    button.className = "btn";
+    button.dataset.floor = +floorsNumber.value + 1 - i;
+    divEl.className = "floor";
+    simulationDiv.appendChild(divEl);
+    divEl.appendChild(button);
+  }
 
   // for lifts
 
@@ -47,4 +59,6 @@ simulateBtn.addEventListener("click", () => {
   });
 });
 
-function createFloors(floorsNumber) {}
+function createFloors(floorsNumber){
+  
+}
