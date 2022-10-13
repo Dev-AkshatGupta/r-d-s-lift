@@ -1,38 +1,77 @@
-*{
-    box-sizing: content-box;
+* {
+  box-sizing: content-box;
 }
 
-.simulation{
-    background-color: yellow;
-    width:100%;
-    position: relative;
+.simulation {
+  background-color: yellow;
+  width: 100%;
+  position: relative;
 }
-.floor{
-    width:100%;
-    height:70px;
-    background-color: red;
-    border: black solid;
+.floor {
+  width: 100%;
+  height: 70px;
+  background-color: red;
+  border-top: black solid 3px;
 }
-.lifts{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    border: solid yellow;
-    background-color: green;
-    height: 60px;
-    margin: 10px;
-    bottom: 0;
-    transition: ease-in-out 2.5s all;
+.lifts {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  border: solid yellow;
+  background-color: green;
+  height: 60px;
+  margin: 10px;
+  bottom: 0;
+  transition: ease-in-out 2.5s all;
 }
-@keyframes door-open-close{
-    0%{width:10%}
-    24%{width:50%}
+@keyframes door-open-close {
+  0% {
+    width: 20%;
+  }
+  10% {
+    width: 40%;
+  }
+  20% {
+    width: 60%;
+  }
+  30% {
+    width: 80%;
+  }
+  40% {
+    width: 100%;
+  }
+  50% {
+    width: 90%;
+  }
+  60% {
+    width: 70%;
+  }
+  70% {
+    width: 50%;
+  }
+  80% {
+    width: 30%;
+  }
+  90% {
+    width: 20%;
+  }
+  100% {
+    width: 10%;
+  }
 }
-.door{
-    height: 100%;
-    position: absolute;
-    background-color: black;
-     animation: door-open-close 4s linear infinite;
-     /* animation: door-open-close 4s linear step-start; */
+.door {
+  left: 0;
+  height: 100%;
+  position: absolute;
+  background-color: black;
+  animation: door-open-close 4s linear infinite;
+  /* animation: door-open-close 4s linear step-start; */
+}
+.door-2 {
+  height: 100%;
+  position: absolute;
+  right: 0;
+  background-color: black;
+  animation: door-open-close 4s linear infinite;
 }

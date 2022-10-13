@@ -17,7 +17,7 @@ simulateBtn.addEventListener("click", () => {
 
   // floor buttons for calling lifts
 
-  liftBtn.forEach((button, index) => {
+  liftBtn.forEach((button) => {
     button.addEventListener("click", () => {
       // loop for finding the closest lift
 
@@ -33,7 +33,6 @@ simulateBtn.addEventListener("click", () => {
             +button.dataset.floor - +lift.dataset.floor
           );
           liftToCall = lift;
-          console.log(liftToCall);
         }
       });
       // liftToCall is closest lift
@@ -51,11 +50,11 @@ function timer(liftToCall) {
   return (delay) => {
     setTimeout(() => {
       liftToCall.dataset.engaged = false;
-      liftToCall.innerHTML = "<div class=door></div>";
+      liftToCall.innerHTML = "<div class=door></div><div class=door-2></div>";
       setTimeout(() => {
-        console.log("doors should be there now");
-        liftToCall.children.div.classList.remove = "door";
-      }, 2500);
+        liftToCall.children[0].className = "";
+        liftToCall.children[1].className = "";
+      }, delay + 2500);
     }, delay);
   };
 }
@@ -64,7 +63,7 @@ function createFloors(floorsNumber) {
   for (let i = 1; i <= floorsNumber.value; i++) {
     let divEl = document.createElement("div");
     let button = document.createElement("button");
-    button.textContent = "call ";
+    button.textContent = "up ";
     button.className = "btn";
     button.dataset.floor = +floorsNumber.value + 1 - i;
     divEl.className = "floor";
