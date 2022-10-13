@@ -65,13 +65,16 @@
   height: 100%;
   position: absolute;
   background-color: black;
-  animation: door-open-close 4s linear infinite;
-  /* animation: door-open-close 4s linear step-start; */
+  animation: door-open-close 5s linear;
+  animation-duration: 5s;
+  animation-iteration-count: 1;
 }
 .door-2 {
   height: 100%;
   position: absolute;
   right: 0;
   background-color: black;
-  animation: door-open-close 4s linear infinite;
+  animation: door-open-close linear;
+  animation-duration: 5s;
+  animation-iteration-count: 1;
 }

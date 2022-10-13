@@ -40,7 +40,7 @@ simulateBtn.addEventListener("click", () => {
       liftToCall.style.bottom = `${+liftToCall.dataset.floor * 70 - 70}px`;
       liftToCall.style.transition = `${closestLiftFloorDifference * 2}s`;
 
-      timer(liftToCall)(closestLiftFloorDifference * 2000);
+      timer(liftToCall)(closestLiftFloorDifference * 5000);
     });
   });
 });
@@ -55,7 +55,7 @@ function timer(liftToCall) {
         liftToCall.children[0].className = "";
         liftToCall.children[1].className = "";
       }, delay + 2500);
-    }, delay);
+    }, delay + 2500);
   };
 }
 function createFloors(floorsNumber) {
