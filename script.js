@@ -76,14 +76,12 @@ function createLifts(liftsNumber) {
   const simulationDiv = document.querySelector(".simulation");
   for (let i = 1; i <= liftsNumber.value; i++) {
     let divEl = document.createElement("div");
-    let doorDivEl = document.createElement("div");
     divEl.className = "lifts";
-    // divEl.append(doorDivEl);
 
     divEl.dataset.floor = 0;
     divEl.dataset.liftNumber = i;
     divEl.dataset.engaged = "false";
-    divEl.style.left = `${i * 40 + i}px`;
+    divEl.style.left = `${i * 40 + i * 15}px`;
     simulationDiv.appendChild(divEl);
   }
 }
