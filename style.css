@@ -78,6 +78,8 @@
   animation-duration: 5s;
   animation-iteration-count: 1;
 }
-/* 1.Add device responsiveness.
+/* 
+Suggestions that were given to me
+
 4.The Lift movement is not 2s per floor(calculate it's speed based on the floor number where the request is coming from ).
 6.If clicked on higher floor buttons, the lift which moved there is submerging down(tweak the distance it should travel). */
