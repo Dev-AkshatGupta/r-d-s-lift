@@ -16,7 +16,7 @@ simulateBtn.addEventListener("click", () => {
     createLifts(liftsNumber);
     liftBtn = document.querySelectorAll(".btn");
     lifts = document.querySelectorAll(".lifts");
-
+    console.log({ floorsNumber: typeof floorsNumber.value });
     // floor buttons for calling lifts
 
     liftBtn.forEach((button) => {
