@@ -7,7 +7,7 @@ let lifts;
 let liftToCall;
 
 simulateBtn.addEventListener("click", () => {
-  console.log(liftsNumber.value);
+  // console.log(liftsNumber.value);
 
   if (liftsNumber.value < 4 && floorsNumber.value < 6) {
     // For floors
@@ -32,20 +32,25 @@ simulateBtn.addEventListener("click", () => {
               +closestLiftFloorDifference &&
             lift.dataset.engaged === "false"
           ) {
+            console.log("ran", lift.dataset.liftNumber);
             closestLiftFloorDifference = Math.abs(
               +button.dataset.floor - +lift.dataset.floor
             );
             liftToCall = lift;
             // console.log({ idx, liftToCall });
-            console.log(lift.dataset.engaged === "false");
+            // console.log(lift.dataset.engaged === "false");
           }
           // liftToCall is closest lift
         });
-        liftToCall.dataset.floor = button.dataset.floor;
-        liftToCall.style.bottom = `${+liftToCall.dataset.floor * 70 - 70}px`;
-        liftToCall.style.transition = `${closestLiftFloorDifference * 2}s`;
+        if (liftToCall.dataset.engaged === "false") {
+          liftToCall.dataset.floor = button.dataset.floor;
+          liftToCall.style.bottom = `${+liftToCall.dataset.floor * 70 - 70}px`;
+          liftToCall.style.transition = `${closestLiftFloorDifference * 2}s`;
 
-        timer(liftToCall)(closestLiftFloorDifference * 5000);
+          timer(liftToCall)(closestLiftFloorDifference * 2000);
+        } else {
+          liftQueue = [...liftQueue, +button.dataset.floor];
+        }
       });
     });
   } else {
@@ -57,11 +62,22 @@ function timer(liftToCall) {
   liftToCall.dataset.engaged = true;
   return (delay) => {
     setTimeout(() => {
-      liftToCall.dataset.engaged = false;
       liftToCall.innerHTML = "<div class=door></div><div class=door-2></div>";
       setTimeout(() => {
         liftToCall.children[0].className = "";
         liftToCall.children[1].className = "";
+        liftToCall.dataset.engaged = false;
+        if (liftQueue[0]) {
+          let floorDifference = Math.abs(
+            liftQueue[0] - liftToCall.dataset.floor
+          );
+          liftToCall.dataset.floor = liftQueue[0];
+          liftToCall.style.bottom = `${+liftToCall.dataset.floor * 70 - 70}px`;
+          liftToCall.style.transition = `${floorDifference * 2}s`;
+
+          timer(liftToCall)(floorDifference * 2000);
+          liftQueue.shift();
+        }
       }, delay + 2500);
     }, delay + 2500);
   };
