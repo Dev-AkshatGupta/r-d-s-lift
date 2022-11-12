@@ -40,12 +40,12 @@ simulateBtn.addEventListener("click", () => {
             console.log(lift.dataset.engaged === "false");
           }
           // liftToCall is closest lift
-          liftToCall.dataset.floor = button.dataset.floor;
-          liftToCall.style.bottom = `${+liftToCall.dataset.floor * 70 - 70}px`;
-          liftToCall.style.transition = `${closestLiftFloorDifference * 2}s`;
-
-          timer(liftToCall)(closestLiftFloorDifference * 5000);
         });
+        liftToCall.dataset.floor = button.dataset.floor;
+        liftToCall.style.bottom = `${+liftToCall.dataset.floor * 70 - 70}px`;
+        liftToCall.style.transition = `${closestLiftFloorDifference * 2}s`;
+
+        timer(liftToCall)(closestLiftFloorDifference * 5000);
       });
     });
   } else {
