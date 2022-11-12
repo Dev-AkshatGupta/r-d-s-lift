@@ -19,7 +19,7 @@
   transform: translateX(-50%);
   width: 40px;
   border: solid yellow;
-  background-color: green;
+  background-color: grey;
   height: 60px;
   margin: 10px;
   bottom: 0;
@@ -80,6 +80,8 @@
 }
 /* 
 Suggestions that were given to me
-
-4.The Lift movement is not 2s per floor(calculate it's speed based on the floor number where the request is coming from ).
-6.If clicked on higher floor buttons, the lift which moved there is submerging down(tweak the distance it should travel). */
+1.  Task are not being queued.
+2 . One  more view is  being created after simulate lift button instead of regenerating
+3. Multiple lift are coming on the same floor
+4. Door colors can be better
+*/

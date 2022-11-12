@@ -1,6 +1,7 @@
 const simulateBtn = document.querySelector("#simulate");
 const liftsNumber = document.querySelector("#lifts");
 const floorsNumber = document.querySelector("#floors");
+let liftQueue = [];
 let liftBtn;
 let lifts;
 let liftToCall;
@@ -21,10 +22,11 @@ simulateBtn.addEventListener("click", () => {
     liftBtn.forEach((button) => {
       button.addEventListener("click", () => {
         // loop for finding the closest lift
-
+        // console.log(typeof button.dataset.floor);
+        // liftQueue.push(Number(button.dataset.floor));
         let closestLiftFloorDifference = 10;
-
         lifts.forEach((lift, idx) => {
+          // console.log({ [idx]: lift.dataset.engaged });
           if (
             Math.abs(+button.dataset.floor - +lift.dataset.floor) <
               +closestLiftFloorDifference &&
@@ -34,14 +36,16 @@ simulateBtn.addEventListener("click", () => {
               +button.dataset.floor - +lift.dataset.floor
             );
             liftToCall = lift;
+            // console.log({ idx, liftToCall });
+            console.log(lift.dataset.engaged === "false");
           }
-        });
-        // liftToCall is closest lift
-        liftToCall.dataset.floor = button.dataset.floor;
-        liftToCall.style.bottom = `${+liftToCall.dataset.floor * 70 - 70}px`;
-        liftToCall.style.transition = `${closestLiftFloorDifference * 2}s`;
+          // liftToCall is closest lift
+          liftToCall.dataset.floor = button.dataset.floor;
+          liftToCall.style.bottom = `${+liftToCall.dataset.floor * 70 - 70}px`;
+          liftToCall.style.transition = `${closestLiftFloorDifference * 2}s`;
 
-        timer(liftToCall)(closestLiftFloorDifference * 5000);
+          timer(liftToCall)(closestLiftFloorDifference * 5000);
+        });
       });
     });
   } else {
