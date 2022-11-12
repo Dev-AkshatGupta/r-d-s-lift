@@ -5,9 +5,9 @@ let liftQueue = [];
 let liftBtn;
 let lifts;
 let liftToCall;
-
+const simulationDiv = document.querySelector(".simulation");
 simulateBtn.addEventListener("click", () => {
-
+  simulationDiv.innerHTML = " <p></p>";
   if (liftsNumber.value < 4 && floorsNumber.value < 6) {
     // For floors
     createFloors(floorsNumber);
@@ -15,26 +15,24 @@ simulateBtn.addEventListener("click", () => {
     createLifts(liftsNumber);
     liftBtn = document.querySelectorAll(".btn");
     lifts = document.querySelectorAll(".lifts");
-    console.log({ floorsNumber: typeof floorsNumber.value });
+
     // floor buttons for calling lifts
 
     liftBtn.forEach((button) => {
       button.addEventListener("click", () => {
-        
+        // loop for finding the closest lift
+
         let closestLiftFloorDifference = 10;
         lifts.forEach((lift, idx) => {
-          
           if (
             Math.abs(+button.dataset.floor - +lift.dataset.floor) <
               +closestLiftFloorDifference &&
             lift.dataset.engaged === "false"
           ) {
-            console.log("ran", lift.dataset.liftNumber);
             closestLiftFloorDifference = Math.abs(
               +button.dataset.floor - +lift.dataset.floor
             );
             liftToCall = lift;
-           
           }
           // liftToCall is closest lift
         });
@@ -49,8 +47,6 @@ simulateBtn.addEventListener("click", () => {
         }
       });
     });
-  } else {
-    alert("Lifts can't be more than 4 and floors can't be more than 6");
   }
 });
 
