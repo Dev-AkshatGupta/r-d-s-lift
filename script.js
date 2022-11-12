@@ -7,7 +7,6 @@ let lifts;
 let liftToCall;
 
 simulateBtn.addEventListener("click", () => {
-  // console.log(liftsNumber.value);
 
   if (liftsNumber.value < 4 && floorsNumber.value < 6) {
     // For floors
@@ -21,12 +20,10 @@ simulateBtn.addEventListener("click", () => {
 
     liftBtn.forEach((button) => {
       button.addEventListener("click", () => {
-        // loop for finding the closest lift
-        // console.log(typeof button.dataset.floor);
-        // liftQueue.push(Number(button.dataset.floor));
+        
         let closestLiftFloorDifference = 10;
         lifts.forEach((lift, idx) => {
-          // console.log({ [idx]: lift.dataset.engaged });
+          
           if (
             Math.abs(+button.dataset.floor - +lift.dataset.floor) <
               +closestLiftFloorDifference &&
@@ -37,8 +34,7 @@ simulateBtn.addEventListener("click", () => {
               +button.dataset.floor - +lift.dataset.floor
             );
             liftToCall = lift;
-            // console.log({ idx, liftToCall });
-            // console.log(lift.dataset.engaged === "false");
+           
           }
           // liftToCall is closest lift
         });
