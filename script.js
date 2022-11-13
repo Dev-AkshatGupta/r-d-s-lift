@@ -47,6 +47,8 @@ simulateBtn.addEventListener("click", () => {
         }
       });
     });
+  } else {
+    alert("We can't have floors more than 5 and lifts more than 3");
   }
 });
 
